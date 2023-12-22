@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const RequestForm = () => {
-  const [name, setName] = useState("");
+  const [nama, setNama] = useState("");
   const [nim, setNim] = useState("");
   const [date, setDate] = useState("");
   const [agenda, setAgenda] = useState("");
@@ -12,8 +12,8 @@ const RequestForm = () => {
   const [borrowedEquipment, setBorrowedEquipment] = useState("");
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleNamaChange = (event) => {
+    setNama(event.target.value);
   };
 
   const handleNimChange = (event) => {
@@ -37,7 +37,7 @@ const RequestForm = () => {
   };
 
   const requestBody = {
-    name,
+    nama,
     nim,
     date,
     agenda,
@@ -59,11 +59,11 @@ const RequestForm = () => {
   };
 
   const handleConfirmation = () => {
-    axios.post("http://localhost:3000/bookingRoom", requestBody)
+    axios.post("http://localhost:3000/bookingEquipments", requestBody)
       .then((response) => {
         if (response.status >= 200 && response.status < 300) {
           console.log("Request successfully submitted to the server");
-          setName("");
+          setNama("");
           setNim("");
           setDate("");
           setAgenda("");
@@ -110,7 +110,7 @@ const RequestForm = () => {
             className="form-control"
             id="name"
             placeholder="Input your name"
-            onChange={handleNameChange}
+            onChange={handleNamaChange}
           />
         </div>
         <div className="mb-3">
